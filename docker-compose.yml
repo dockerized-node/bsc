@@ -1,7 +1,7 @@
 version: "3.0"
 
 services:
-  geth:
+  bsc:
     image: bsc
     build:
       context: .
@@ -14,4 +14,11 @@ services:
     volumes:
       - ./data:/bsc/data
       - ./config.toml:/bsc/config.toml
-    command: --config /bsc/config.toml --nat extip:127.0.0.1
+    command: --config /bsc/config.toml --datadir /bsc/data --nat extip:127.0.0.1
+  genesis:
+    image: bsc
+    container_name: genesis
+    volumes:
+      - ./data:/bsc/data
+      - ./config.toml:/bsc/config.toml
+    command: --datadir /bsc/data init genesis.json
