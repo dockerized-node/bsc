@@ -6,4 +6,6 @@ RUN mv /bsc/geth_linux /bsc/geth && chmod +x /bsc/geth
 
 WORKDIR /bsc
 
+COPY genesis.json /bsc
+
 ENTRYPOINT [ "/bsc/geth" ]
